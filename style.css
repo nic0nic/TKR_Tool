@@ -1,0 +1,90 @@
+.horizontal-scrollable>.row {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.horizontal-scrollable>.row>.col {
+    display: inline-block;
+    float: none;
+}
+
+/* Decorations  */
+
+.col {
+    color: black;
+    font-size: 18px;
+    padding-bottom: 20px;
+    padding-top: 18px;
+
+}
+.input{
+    background-color: rgb(191, 255, 194);
+    width: 100px;
+}
+/* Fitting Inputs Styling */
+.btn {
+    color: black;
+    background-color: darkgray;
+    touch-action: pinch-zoom;
+}
+
+[class*="form-col"] {
+    flex: 0 1 100%;
+    padding: 0 1rem;
+}
+
+@media (min-width: 576px) {
+    .form-col-4 {
+        flex: 0 0 33.33333%;
+        max-width: 33.33333%;
+    }
+
+    .form-col-8 {
+        flex: 0 0 66.66667%;
+        max-width: 33.33333%;
+    }
+
+    .offset-form-col-4 {
+        margin-left: 33.33333%;
+    }
+
+}
+.col-sm{
+    padding-top: 0px;
+}
+.col-450px {
+    -ms-flex: 0 0 450px;
+    flex: 0 0 450px;
+    padding-right: 0cm;
+    padding-bottom: 20px;
+}
+.col-500px {
+    -ms-flex: 0 0 500px;
+    flex: 0 0 500px;
+    padding-right: 0cm;
+    padding-bottom: 20px;
+}
+.col{
+    padding-top: 0cm;
+}
+input {
+    display: inline-block;
+    height: 30;
+    /*width: 100%;
+    min-width: 3cm;*/
+}
+
+label {
+    display: inline-block;
+    width: 6cm;
+    text-align: left;
+}
+
+select {
+    display: inline-block;
+    width: 12em;
+    /*max-width: 25%;*/
+}
+header a{
+    padding-top:10px;
+} 
