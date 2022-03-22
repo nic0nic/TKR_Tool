@@ -13,12 +13,6 @@ class tkr_einzel {
     }
 
 }
-class tuple {
-    constructor(first, second) {
-        this.first = first;
-        this.second = second;
-    }
-}
 class tkr_gesamt {
     constructor(dbgesamt, fk, be) {
         this.dbgesamt = dbgesamt;
@@ -32,7 +26,7 @@ class tkr {
         this.tkr_einzel = tkr_einzel;
         this.tkr_gesamt = tkr_gesamt;
     }
-
+    
     db_nan() {
         //how many db for products are NaN
         let result = 0;
@@ -362,7 +356,7 @@ class tkr {
             if (NaN_or_undefined(solution.tkr_gesamt.fk)) {
                 let temp = calculation.fk(solution.tkr_gesamt);
                 if (typeof temp != "boolean") {
-                    solution.tkr_gesamt.dbgesamt = temp;
+                    solution.tkr_gesamt.fk = temp;
                     changes = true;
                 }
             }
@@ -370,7 +364,7 @@ class tkr {
             if (NaN_or_undefined(solution.tkr_gesamt.be)) {
                 let temp = calculation.be(solution.tkr_gesamt);
                 if (typeof temp != "boolean") {
-                    solution.tkr_gesamt.dbgesamt = temp;
+                    solution.tkr_gesamt.be = temp;
                     changes = true;
                 }
             }
@@ -403,8 +397,8 @@ class tkr {
 
 
 function read_form(element, einzel_size, check_empty = true) {
-    console.log('read_form check:', check_empty);
-    console.log('read_form einzel_size:', einzel_size, typeof einzel_size);
+    // console.log('read_form check:', check_empty);
+    // console.log('read_form einzel_size:', einzel_size, typeof einzel_size);
     if (!element instanceof Element) {
         console.warn("create_tkr_from_form only takes form from type element");
         return false;
@@ -867,9 +861,9 @@ var calculation = {
             console.warn("calculations.fk only accepts instances of tkr_gesamt");
             return false;
         }
-        if (NaN_or_undefined(tkr_g.db) || NaN_or_undefined(tkr_g.be))
+        if (NaN_or_undefined(tkr_g.dbgesamt) || NaN_or_undefined(tkr_g.be))
             return false;
-        return tkr_g.db - tkr_g.be;
+        return tkr_g.dbgesamt - tkr_g.be;
     },
 
     be: function (tkr_g) {
@@ -877,8 +871,8 @@ var calculation = {
             console.warn("calculations.be only accepts instances of tkr_gesamt");
             return false;
         }
-        if (NaN_or_undefined(tkr_g.db) || NaN_or_undefined(tkr_g.fk))
+        if (NaN_or_undefined(tkr_g.dbgesamt) || NaN_or_undefined(tkr_g.fk))
             return false;
-        return tkr_g.db - tkr_g.fk;
+        return tkr_g.dbgesamt - tkr_g.fk;
     }
 }
