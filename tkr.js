@@ -1,4 +1,3 @@
-// export {tkr, tkr_einzel, tkr_gesamt, create_tkr};
 src = "https://code.jquery.com/jquery-3.6.0.min.js"
 integrity = "sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 crossorigin = "anonymous"
@@ -63,7 +62,6 @@ class tkr {
         divg.setAttribute('class', 'col');
         divg.name = "div_g";
         var rgb = "228, 242, 196"
-        //element.textContent = '';
 
         var einzel = document.createElement('div');
         einzel.setAttribute('class', 'row');
@@ -369,7 +367,7 @@ class tkr {
                 }
             }
         } while (changes)
-        //check's NOT if in conflict with other calculations, that are not used! (Annahme: Angabe lässt sich eindeutig lösen!)
+        //check's NOT if in conflict with other calculations, that are not used! (asumes angabe has unique solution!)
         return solution;
     }
     
@@ -397,8 +395,6 @@ class tkr {
 
 
 function read_form(element, einzel_size, check_empty = true) {
-    // console.log('read_form check:', check_empty);
-    // console.log('read_form einzel_size:', einzel_size, typeof einzel_size);
     if (!element instanceof Element) {
         console.warn("create_tkr_from_form only takes form from type element");
         return false;
@@ -409,15 +405,11 @@ function read_form(element, einzel_size, check_empty = true) {
 }
 
 function help_read_form(element, obj) {
-    //console.log('element:', element);
-    //just for read_form()
     if (element.childElementCount > 0) {
         for (var j = 0; j < element.childElementCount; j++) {
             help_read_form(element.children[j], obj);
         }
     } else {
-        //console.log('.nodeName:', element.nodeName);
-        //console.log('.type:', element.type);
         if (element.nodeName == 'LABEL') {
             return;
         }
@@ -432,7 +424,7 @@ function create_tkr_from_obj(obj, einzel_size, check) {
     console.log('obj:', obj);
     console.log('einzel_size:', einzel_size);
     console.log('check:', check);
-    //obj basiert auf aufgabe. Neues tkr Element Abgabe erstellen
+    //obj is based on aufgabe. New tkr Element Abgabe is created
     let abgabe_einzel = [];
     for (let i = 0; i < einzel_size; i++) {
         let e, vk, dbstk, anzahl, db_prod;
@@ -477,9 +469,7 @@ function create_tkr_from_obj(obj, einzel_size, check) {
 }
 
 function create_tkr(string) {
-    //if undefined
-    //Aufbau IDENT § (E _ VK _ DB _ ANZAHL e)* g DBGESAMT _ FK _ BE
-    //mit json viel einfacher, zu spät gemerkt
+    //would be much easier with .json-file
     let array = string.split('§');
     if (array[0] != "tkr") {//check if IDENT is correct
         console.warn("String identifier is wrong");
@@ -698,10 +688,6 @@ function view_correction(tkr_abgabe, tkr_solution, element) {
     be.type = 'number';
     fk.type = 'number';
     db.type = 'number';
-
-    // be.setAttribute('class',)
-    // fk.setAttribute('class',)
-    // db.setAttribute('class',)
 
     be.value = tkr_abgabe.tkr_gesamt.be;
     fk.value = tkr_abgabe.tkr_gesamt.fk;

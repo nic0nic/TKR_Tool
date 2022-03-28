@@ -25,7 +25,7 @@
           <li><a class="dropdown-item" href="../tutorial/erloese.php">Erlöse</a></li>
         </ul>
       </li>
-      <li id="head_about" class="nav-item"><a href="#" class="nav-link">Über dieses Projekt</a></li>
+      <li id="head_about" class="nav-item"><a href="../about.php" class="nav-link">Über dieses Projekt</a></li>
       <li id="head_contact" class="nav-item"><a href="#" class="nav-link">Impressum</a></li>
     </ul>
   </header>
